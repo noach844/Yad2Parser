@@ -11,7 +11,6 @@ def page_to_df(driver):
     models = driver.find_elements_by_class_name("feeditem")
     model_data = {'Model': [], 'Hand': [], 'Year': [], 'Price': [], 'Engine': [], 'Kilometers': [], 'EngineType': [],
                   'GearBox': [], 'Color': []}
-    time.sleep(5)
     for index, model in enumerate(models):
         try:
             driver.find_element_by_xpath('/html/body/div[2]/div[2]/div/main/div/div[5]/div/button').click()
@@ -19,7 +18,6 @@ def page_to_df(driver):
             pass
         model.find_elements_by_class_name("merchant")[0].click()
         print(f"opened model {index}")
-        time.sleep(2)
 
     for model in models:
         model_name = model.find_element_by_class_name("title").get_attribute('innerHTML')
